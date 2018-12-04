@@ -33,7 +33,7 @@
           .attr("style", "position: absolute; left: 0px;" );
     
 
-        d3.json('./data/gfs.json', function(err, data){
+        d3.json('data/gfs.json', function(err, data){
           windy = new Windy({canvas: canvas.node(), data: data});
           update();
         });
