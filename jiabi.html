@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Windy Demo</title>
+    <link rel='stylesheet' href='css/style.css'>
+  </head>
+
+  <body onload='initMap()'>
+    <div id='map'></div>
+    <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src='https://rawgithub.com/stamen/modestmaps-js/master/modestmaps.min.js'></script>
+    <script src='js/windy.js'></script>
+    
+    <script>
+      var map,windy,mapBase;
+  function initMap(){
+     
+       var provider = new MM.TemplatedLayer('http://tile.openstreetmap.org/{Z}/{X}/{Y}.png');
+        map = new MM.Map('map', provider); 
+        map.setCenterZoom(new MM.Location( 44, -90), 5);
+        var canvas = d3.select("#map").append("canvas")
+          .attr("width", map.dimensions.x)
+          .attr("height", map.dimensions.y)
+          .attr("style", "position: absolute; left: 0px;" );
+          
+          d3.json('data/gfs.json', function(data){
+          windy = new Windy({canvas: canvas.node(), data: data});
+          update();
+          });
+          console.log(map.locationPoint(map.getExtent().northWest()).y);
+         
+          var adjustTO;
+         
+         function update() {
+          var ctx = canvas.node().getContext('2d');// will return a drawing context on the canvas
+          ctx.clearRect(0, 0, map.dimensions.x, map.dimensions.y);
+          if ( typeof( adjustTO ) != 'undefined' ) window.clearTimeout(adjustTO); //refresh settimeout function
+          adjustTO = setTimeout(function(){         //set time out in case web excute "drawing wind" command befor the tile maps are loaded completely;
+            if ( windy){
+              var extent = map.getExtent(),         //return extent of longitude and latitude of this map
+                ul = map.locationPoint(extent.northWest()),
+                lr = map.locationPoint(extent.southEast()),
+                width = lr.x + ul.x,
+                height = lr.y + ul.y
+
+              windy.start( [[ul.x, ul.y], [lr.x, lr.y]], width, height );
+            }
+            adjustTO = undefined;
+
+          }, 200);
+
+        }
+      
+        map.addCallback('drawn', function(){ 
+          var ctx = canvas.node().getContext('2d');
+          ctx.clearRect(0, 0, map.dimensions.x, map.dimensions.y);
+          if (windy){
+            windy.stop();
+          }
+          update(); 
+        });
+        map.addCallback('resized', function() {
+          var ctx = canvas.node().getContext('2d');
+          ctx.clearRect(0, 0, map.dimensions.x, map.dimensions.y);
+          canvas.width = map.dimensions.x;
+          canvas.height = map.dimensions.y;
+          update();
+        });
+        map.addCallback('panned',function(){
+          console.log("123123");
+
+        })
+      
+        update( );
+      }
+      
+    </script>
+  </body>
+</html>
+
