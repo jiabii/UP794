@@ -1,5 +1,7 @@
 
 
+
+
 /* Global class for simulating wind 
 // params
     url to wind data .json
@@ -355,9 +357,14 @@ var Windy = function( params ){
         return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
     }
   
+  function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
+    function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
+    function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
+    function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
+
     function windIntensityColorScale(step, maxWind) {
         var result = [
-        rgba(" + hexToR('#00ffff') + ", " + hexToG('#00ffff') + ", " + hexToB('#00ffff') + ", " + 0.5 + ")",
+        "rgba(" + hexToR('#00ffff') + ", " + hexToG('#00ffff') + ", " + hexToB('#00ffff') + ", " + 0.5 + ")",
           "rgba(" + hexToR('#64f0ff') + ", " + hexToG('#64f0ff') + ", " + hexToB('#64f0ff') + ", " + 0.5 + ")",
           "rgba(" + hexToR('#87e1ff') + ", " + hexToG('#87e1ff') + ", " + hexToB('#87e1ff') + ", " + 0.5 + ")",
           "rgba(" + hexToR('#a0d0ff') + ", " + hexToG('#a0d0ff') + ", " + hexToB('#a0d0ff') + ", " + 0.5 + ")",
