@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jiabii</title>
+	<style type="text/css">
+	body{
+		background: url('45degreee_fabric.png');
+
+	}
+	#information{
+		font-size: 30px;
+		font-family: monospace;
+		font-style: italic;
+	}
+	#date{
+		font-size: 15px;
+		font-family: monospace;
+		font-style: italic;
+	}
+	
+	#animated_div
+	{	
+    width:450px;
+	height:250px;
+	background:#92B901;
+	color:#ffffff;
+	position:relative;
+	font-weight:bold;
+	font-size: 60px;
+	font-family: monospace;
+	font-style: italic;
+	font:bold 12px , Verdana, Arial, Helvetica, sans-serif;
+	padding:20px 10px 0px 10px;
+	-webkit-animation:animated_div 5s infinite;
+	-webkit-border-radius:15px;
+	margin-top: 20%;
+
+	}
+@-webkit-keyframes animated_div
+	{
+	0%		{-webkit-transform: rotate(0deg);left:0px;}
+	25%		{-webkit-transform: rotate(45deg);left:0px;}
+	50%		{-webkit-transform: rotate(0deg);left:750px;}
+	55%		{-webkit-transform: rotate(0deg);left:750px;}
+	70%		{-webkit-transform: rotate(0deg);left:750px;}
+	100%	{-webkit-transform: rotate(-360deg);left:0px;}
+	}
+
+
+	</style>
+	<script type="text/javascript">
+	function time(){
+		var now =new Date();
+		var year=now.getFullYear();
+		var month=now.getMonth();
+		var date=now.getDate();
+		document.getElementById("time").innerHTML=month+"/"+date+"/"+year;
+	}
+	
+	
+	</script>
+
+</head>
+<body onload="time()">
+ <header>
+  <div id="information">
+   <p style="margin-left: 48%">UP794</p>
+   <p style="margin-left: 44.5%">Final Project</p>
+   <p style="margin-left: 45.5%">Jiahong Pu</p>
+  </div>
+  <div id="date">
+   <p id="time" style="margin-left: 50%">
+   </p>
+  </div>
+
+</header>
+<div>
+<p id="animated_div" onclick="window.location='http://jiabii.github.io/UP794/index.html'">Data Visualization</p>
+</div>
+
+</body>
+</html>

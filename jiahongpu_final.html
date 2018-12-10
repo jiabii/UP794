@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jiabii</title>
+<style>
+ body{
+ 	background: url('45degreee_fabric.png');
+ }
+ 
+
+
+</style>
+<script type="text/javascript" src="js/changesrc.js"></script>
+</head>
+<body>
+<div class="column"> 
+ <h1> Data Visualization </h1>
+ <div class="phase1">
+  <ul >
+   <img src="https://jiabii.github.io/UP794/phase1_fit.png" style="margin-left:450px;">
+   <li>Data Source(NetCDF)
+    <a href="https://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/">
+    ECMWF datasets
+    </a>
+   </li>
+   <li>How to display speed and direction symbology from U and V vectors
+    <a href="https://www.esri.com/arcgis-blog/products/product/analytics/displaying-speed-and-direction-symbology-from-u-and-v-vectors/?rmedium=redirect&rsource=blogs.esri.com/esri/arcgis/2013/07/17/displaying-speed-and-direction-symbology-from-u-and-v-vectors"> ArcGIS Blog
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="phase2">
+  <iframe src="http://jiabii.github.io/UP794/jiabi.html" style="width: 800px;height: 566px;margin-left: 450px;margin-top:250px">
+  </iframe>
+  <a href="http://jiabii.github.io/UP794/jiabi.html">Open</a>
+  <ul>
+   <li>
+   Data Source(GRIB)
+    <a href="https://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/">
+    ECMWF datasets
+    </a>
+   </li>
+   <li>
+   Inspiring by 
+   <a href="https://github.com/cambecc/air">
+   cambecc/air
+   </a>
+   </li>
+   <li>
+   Before the data can be used with this code it has to be converted into JSON. To do this we used a JAVA library called 
+    <a href="https://github.com/cambecc/grib2json">
+    grib2json
+    </a>
+    . That tool converts data in the GRIB2 file format into a JSON structure with the grid represented as an array
+   </li>
+   <li>
+   Use
+    <a href="https://d3js.org/">D3</a>
+    to draw the wind.
+   Use 
+    <a href="https://github.com/stamen/modestmaps-js">Stamen Map</a>
+    to initialize map
+   </li>
+   <li>
+   Primary JS code for this project
+    <a href="http://jiabii.github.io/UP794/js/windy.js">windy.js</a>
+   </li>
+  </ul>
+ </div>
+ <div class="phase3">
+  <iframe src="http://jiabii.github.io/UP794/index.html" style="width: 1250px;height: 750px;margin-left: 250px;margin-top:250px"></iframe>
+  <ul>
+   <li>
+   All of the code derive from 
+    <a href="http://hint.fm/wind/">
+     wind map
+    </a>
+   </li>
+  </ul>
+ </div>
+</div>
+
+	
+
+
+</body>
+</html>
